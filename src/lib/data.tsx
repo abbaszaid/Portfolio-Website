@@ -1,5 +1,8 @@
-import { Icons } from '@/components/icons';
+import { FaAws, FaPython } from 'react-icons/fa';
+import { FaGolang } from 'react-icons/fa6';
+import { RiFirebaseFill } from 'react-icons/ri';
 
+import { Icons } from '@/components/icons';
 export const links = [
   {
     name: 'Home',
@@ -25,86 +28,128 @@ export const links = [
 
 export const projectsData = [
   {
-    image: '/projects/socialhub.svg',
-    title: 'SocialHub',
-    description:
-      'Next-generation social media app, built with its own backend.',
-    technologies: ['Next.js', 'TypeScript', ' Nest.js', 'Tailwind', 'Prisma'],
-    links: {
-      preview: 'https://socialhub-ms.vercel.app/',
-      github: 'https://github.com/Skolaczk/SocialHub',
-    },
-  },
-  {
-    image: '/projects/nextstarter.svg',
-    title: 'Next-starter',
-    description: 'Next.js starter template, packed with useful features.',
+    image: '/projects/ai.png',
+    title: 'Currently developing: AI app',
+    description: 'Cross platform app with AI intergrated',
     technologies: [
-      'Next.js',
+      'React Native Expo',
       'TypeScript',
-      'Tailwind',
-      'Shadcn/ui',
-      'Next-auth',
-      'Prisma',
-    ],
-    links: {
-      preview: 'https://next-starter-skolaczk.vercel.app',
-      github: 'https://github.com/Skolaczk/next-starter',
-    },
-  },
-  {
-    image: '/projects/audiophile.svg',
-    title: 'Audiophile',
-    description: 'Online store specializing in headphones and speakers.',
-    technologies: [
-      'React',
-      'Styled-components',
-      'TypeScript',
-      'Stripe',
-      'Firebase',
+      'DynamoDB',
+      'FirebaseAuth',
     ],
     links: {
       preview: 'https://audiophile-ms.netlify.app/',
-      github: 'https://github.com/Skolaczk/Audiophile',
+      github: 'https://github.com/abbaszaid/tujjari',
+    },
+  },
+  {
+    image: '/projects/priceseekr.png',
+    title: 'PriceSeekr',
+    description:
+      'Web extension that finds cheaper and similar products in one click!',
+    technologies: [
+      'TypeScript',
+      'React',
+      ' Plasmo',
+      'Firebase Auth',
+      'Firestore',
+    ],
+    links: {
+      preview: 'https://socialhub-ms.vercel.app/',
+      github: 'https://github.com/abbaszaid/PriceSeekr',
+    },
+  },
+  {
+    image: '/projects/geonerd.png',
+    title: 'GeoNerd',
+    description: 'A multiplayer web game used by over 2000 people',
+    technologies: ['JavaScript', 'Socket.io', 'API(axios)', 'HTML', 'CSS'],
+    links: {
+      preview: 'https://next-starter-skolaczk.vercel.app',
+      github: 'https://github.com/abbaszaid/geonerd',
+    },
+  },
+  {
+    image: '/projects/tujjari.png',
+    title: 'Tujjari',
+    description: 'Car selling and buying platform with a realtime chat',
+    technologies: [
+      'PHP',
+      'JavaScript',
+      'AJAX',
+      'MySQL',
+      'Firebase Realtime DB',
+    ],
+    links: {
+      preview: 'https://audiophile-ms.netlify.app/',
+      github: 'https://github.com/abbaszaid/tujjari',
+    },
+  },
+  {
+    image: '/projects/s.png',
+    title: 'Space Invaders - Android Game',
+    description:
+      'An android game with a theme similar to the popular 1978s arcade video game Space Invaders',
+    technologies: [
+      'TypeScript',
+      'React',
+      ' Plasmo',
+      'Firebase Auth',
+      'Firestore',
+    ],
+    links: {
+      preview: 'https://socialhub-ms.vercel.app/',
+      github: 'https://github.com/abbaszaid/Fast-as-Light',
+    },
+  },
+  {
+    image: '/projects/idir.png',
+    title: 'Fact Checker',
+    description:
+      'Full stack website that searches the web and generates a easily to read map with all its findings related to the claim',
+    technologies: [
+      'Flask',
+      'Python',
+      'JavaScript',
+      'HTML',
+      'CSS',
+      'BeautifulSoup',
+    ],
+    links: {
+      preview: 'https://next-starter-skolaczk.vercel.app',
+      github: 'https://github.com/abbaszaid/geonerd',
     },
   },
 ] as const;
 
 export const experiencesData = [
   {
-    title: 'Internship at WEB-BOX',
-    location: 'Tarnobrzeg, PL',
+    title: 'SDE @ IDIR',
+    location: 'Dallas, Texas',
     description:
-      'During this internship, I focused on two key areas: creating Wordpress plugins and managing website content, plugins, and settings.',
-    date: '2023',
+      'Worked part time as a web developer and built a full stack fact checker website with visualizations for a data research lab',
+    date: '2022-Present',
   },
   {
-    title: 'Internship at Chop-Chop',
+    title: 'Java Developer Intern @ PISIQ',
     location: 'Remote',
     description:
-      'During my internship at Chop-Chop, I collaborated with an experienced IT team, focusing on tasks in Next.js. This experience provided valuable insights into teamwork and advanced my proficiency in Next.js.',
-    date: '2024',
-  },
-  {
-    title: 'Freelancing',
-    location: 'Remote',
-    description:
-      'As a freelancer, I specialized in graphic design using Figma and website development using Next.js with Sanity CMS. I undertook projects independently, from design conceptualization to final implementation, ensuring client satisfaction.',
-    date: '2023 - present',
+      'Built Telegram chatbots using Java and the telegram API to enhance the customer service offered',
+    date: '2020',
   },
 ] as const;
 
 export const skillsData = [
-  { icon: <Icons.html className="size-12" /> },
-  { icon: <Icons.css className="size-12" /> },
-  { icon: <Icons.sass className="size-12" /> },
-  { icon: <Icons.tailwind className="size-12" /> },
+  { icon: <FaPython className="size-12" /> },
   { icon: <Icons.javascript className="size-12" /> },
   { icon: <Icons.typescript className="size-12" /> },
   { icon: <Icons.react className="size-12" /> },
-  { icon: <Icons.redux className="size-12" /> },
   { icon: <Icons.nextjs className="size-12" /> },
-  { icon: <Icons.nestjs className="size-12" /> },
-  { icon: <Icons.prisma className="size-12" /> },
+  { icon: <FaAws className="size-12" /> },
+  { icon: <FaGolang className="size-12" /> },
+  { icon: <RiFirebaseFill className="size-12" /> },
+  { icon: <Icons.tailwind className="size-12" /> },
+  { icon: <Icons.html className="size-12" /> },
+  { icon: <Icons.css className="size-12" /> },
   { icon: <Icons.docker className="size-12" /> },
 ] as const;

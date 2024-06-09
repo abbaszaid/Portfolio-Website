@@ -10,6 +10,10 @@ import { projectsData } from '@/lib/data';
 export const Projects = () => {
   const { ref } = useSectionInView('Projects');
 
+  // Split projectsData into two groups
+  const firstRowProjects = projectsData.slice(0, 3);
+  const secondRowProjects = projectsData.slice(3, 6);
+
   return (
     <section ref={ref} id="projects" className="my-10 scroll-mt-28">
       <motion.div
@@ -27,13 +31,20 @@ export const Projects = () => {
       >
         <SectionHeading
           heading="My Projects"
-          content="Projects I worked on. Each of them containing its own case study."
+          content="Some of my favorite projects"
         />
       </motion.div>
-      <div className="flex flex-col gap-8 md:flex-row">
-        {projectsData.map((project, index) => (
-          <Project key={project.title} project={project} index={index} />
-        ))}
+      <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-8 md:flex-row">
+          {firstRowProjects.map((project, index) => (
+            <Project key={project.title} project={project} index={index} />
+          ))}
+        </div>
+        <div className="flex flex-col gap-8 md:flex-row">
+          {secondRowProjects.map((project, index) => (
+            <Project key={project.title} project={project} index={index + 3} />
+          ))}
+        </div>
       </div>
     </section>
   );

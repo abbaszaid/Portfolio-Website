@@ -81,6 +81,7 @@ export const Icons = {
       </defs>
     </svg>
   ),
+
   javascript: (props: LucideProps) => (
     <svg viewBox="0 0 50 50" {...props}>
       <path

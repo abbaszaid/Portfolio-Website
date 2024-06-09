@@ -1,17 +1,18 @@
 import { env } from '@/env.mjs';
 
 export const siteConfig = {
-  title: 'Michał Skolak | Front-end developer',
+  title: 'Abbas Zaidi | CS @ UTA',
   description:
-    "Hello, I'm Michał. I am front-end developer from Poland. I enjoy building sites and apps. My focus is React (Next.js).",
+    "Hello, I'm Abbas.I am a senior at the University of Texas at Arlington majoring in CS. I love developing and deploying websites, apps, games and extensions that serve a purpose.",
   keywords: [
-    'Michał Skolak',
-    'Front-end developer',
-    'Poland',
+    'Abbas Zaidi',
+    'Software Engineer',
+    'United States',
     'React',
     'Next.js',
     'Web development',
     'Front-end',
+    'Back-end',
     'UI/UX',
     'Responsive design',
     'JavaScript',
@@ -26,6 +27,6 @@ export const siteConfig = {
     'Programming',
     'Tech enthusiast',
   ],
-  url: env.SITE_URL || 'https://example.com',
+  url: env.SITE_URL || 'https://abbas-zaid.com',
   googleSiteVerificationId: env.GOOGLE_SITE_VERIFICATION_ID || '',
 };

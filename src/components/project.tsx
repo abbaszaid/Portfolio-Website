@@ -1,5 +1,4 @@
 'use client';
-
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
@@ -42,8 +41,15 @@ export const Project = ({ project, index }: TProps) => {
       custom={index}
       className="bg-secondary rounded p-5 md:w-1/3"
     >
-      <div className="bg-muted w-fit rounded-full p-4">
-        <Image src={image} alt={`${title} image`} width={32} height={32} />
+      <div className="bg-muted flex size-20 items-center justify-center rounded-full p-2">
+        <Image
+          priority={false}
+          src={image}
+          alt={`${title} image`}
+          object-contain
+          height={150}
+          width={150}
+        />
       </div>
       <h3 className="my-2 text-lg font-medium">{title}</h3>
       <p className="text-muted-foreground">{description}</p>
@@ -56,11 +62,13 @@ export const Project = ({ project, index }: TProps) => {
       </div>
       <Button variant="outline" asChild className="mr-2 px-5">
         <a href={links.preview} aria-label="preview project">
+          {/* Ensure the icon has a consistent size */}
           <Icons.preview className="size-5" />
         </a>
       </Button>
       <Button variant="outline" asChild className="px-5">
         <a href={links.github} aria-label="github">
+          {/* Ensure the icon has a consistent size */}
           <Icons.githubOutline className="size-5" />
         </a>
       </Button>

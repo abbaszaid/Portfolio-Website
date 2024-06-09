@@ -1,6 +1,6 @@
 'use client';
-
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 import { SectionHeading } from '@/components/section-heading';
 import { Skills } from '@/components/skills';
@@ -13,30 +13,40 @@ export const About = () => {
     <motion.section
       ref={ref}
       id="about"
-      className="my-10 flex w-full scroll-mt-28 flex-col items-center"
+      className="my-10 flex flex-col items-center"
       initial={{ opacity: 0, y: 100 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.175 }}
     >
-      <SectionHeading heading="About Me" />
-      <div className="-mt-5 max-w-2xl text-center leading-7">
-        <p className="mb-4">
-          I&apos;m Michał Skolak, I&apos;m a front-end developer from Poland.
-          I&apos;ve been learning programming for over 3 years. After I started
-          high school, I decided to pursue my passion for programming. My
-          favorite part of programming is the problem-solving aspect. I love the
-          feeling of finally figuring out a solution to a problem. I&apos;ve had
-          the opportunity to work on several exciting projects during my
-          learning journey, ranging from personal projects to collaborative
-          ventures. My core stack is React, Next.js, TypeScript, and Tailwind
-          CSS. I am also familiar with Nest.js and Prisma. I am always looking
-          to learn new technologies.
-        </p>
-        <p>
-          I&apos;m open to Job opportunities where I can contribute, learn and
-          grow. If you have a good opportunity that matches my skills and
-          experience then don&apos;t hesitate to contact me.
-        </p>
+      <SectionHeading heading="Get to know me!" />
+      <div className="mt-5 flex max-w-full flex-col items-center justify-center md:flex-row md:justify-between">
+        <div className="mb-5 flex justify-center md:mb-0 md:w-1/2">
+          <div className="md:w-70% w-32">
+            <Image
+              src="/headshot2.png"
+              alt="Your Photo"
+              width={300}
+              height={300}
+              className="w-full"
+            />
+          </div>
+        </div>
+        <div className="flex-1 text-center leading-7 md:w-1/2 md:text-left">
+          <p className="mb-4">
+            I&apos;m currently a senior @ UTA majoring in CS. I love building
+            and hosting personal projects with new technologies that I&apos;m
+            interested in learning.
+          </p>
+          <p className="mb-4">
+            Other than programming, I love travelling, going to the gym, and
+            trying out new cuisines.
+          </p>
+          <p>
+            I&apos;m looking for full time/internship software engineering roles
+            at a place where I can get an opportunity to contribute as well as
+            work and learn from great engineers.
+          </p>
+        </div>
       </div>
       <Skills />
     </motion.section>
