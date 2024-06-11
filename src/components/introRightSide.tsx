@@ -4,6 +4,7 @@ import {
   Html,
   OrbitControls,
   PerspectiveCamera,
+  useFBX,
   useGLTF,
 } from '@react-three/drei';
 import { Canvas, extend, useFrame } from '@react-three/fiber';
@@ -52,8 +53,7 @@ function Model({ animation }: { animation: THREE.AnimationClip }) {
 }
 
 export const CharacterSection = () => {
-  const { animations: wavingAnimations } = useGLTF('/waving.glb'); // Load waving animation from GLB
-  const wavingAnimation = wavingAnimations[0];
+  const wavingAnimation = useFBX('/waving.fbx').animations[0];
   const { animations: backflipAnimations } = useGLTF('/backflip.glb'); // Load backflip animation from GLB
   const backflipAnimation = backflipAnimations[0];
   const [currentAnimation, setCurrentAnimation] = useState(wavingAnimation);
@@ -111,5 +111,5 @@ export const CharacterSection = () => {
 };
 
 useGLTF.preload('/final_model.glb');
-useGLTF.preload('/waving.glb'); // Preload waving animation
-useGLTF.preload('/backflip.glb'); // Preload backflip animation
+useFBX.preload('/waving.fbx');
+useGLTF.preload('/backflip.glb');
