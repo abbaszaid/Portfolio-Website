@@ -1,30 +1,33 @@
 'use client';
 import React, { Suspense, useEffect, useRef, useState } from 'react';
 import { Html, OrbitControls, PerspectiveCamera } from '@react-three/drei';
-import { Canvas, extend, useFrame, useLoader } from '@react-three/fiber';
-import { useTheme } from 'next-themes';
+import { Canvas, extend, useFrame } from '@react-three/fiber';
+import { useTheme } from 'next-themes'; // Import useTheme from next-themes
 import * as THREE from 'three';
-import { GLTFLoader } from 'three-stdlib';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 extend({ CircleGeometry: THREE.CircleGeometry });
 
-interface ModelProps {
+function Model({
+  animations,
+  inputValue,
+  gltf,
+}: {
   animations: THREE.AnimationClip[];
   inputValue: string;
-}
-
-function Model({ animations, inputValue }: ModelProps) {
+  gltf: THREE.Object3D;
+}) {
   const group = useRef<THREE.Group>(null);
-  const gltf = useLoader(GLTFLoader, '/avatar.glb');
-  const mixer = useRef(new THREE.AnimationMixer(gltf.scene)).current;
+  const mixer = useRef(new THREE.AnimationMixer(gltf)).current;
   const actions = useRef<THREE.AnimationAction[]>([]);
 
   useEffect(() => {
     if (animations) {
-      actions.current = animations.map((animation: THREE.AnimationClip) =>
+      actions.current = animations.map((animation) =>
         mixer.clipAction(animation)
       );
-      actions.current[1].play(); // Play the standing animation by default
+      // Play the standing animation by default
+      actions.current[1].play();
     }
   }, [animations, mixer]);
 
@@ -46,7 +49,7 @@ function Model({ animations, inputValue }: ModelProps) {
     if (inputValue === 'wave') {
       playAnimation(2); // 'waving' animation index
     } else if (inputValue === 'backflip') {
-      playAnimation(0); // 'backflip' animation index (assuming 0 is the correct index)
+      playAnimation(0); // 'backflip' animation index (assuming 3 is the correct index)
     }
   };
 
@@ -60,16 +63,31 @@ function Model({ animations, inputValue }: ModelProps) {
       onPointerOver={handlePointerOver}
       onPointerOut={handlePointerOut}
     >
-      <primitive object={gltf.scene} scale={5} />
+      <primitive object={gltf} scale={5} />
     </group>
   );
 }
 
-export const CharacterSection: React.FC = () => {
-  const gltf = useLoader(GLTFLoader, '/avatar.glb');
-  const animations = gltf.animations; // Extract animations from GLTF
-  const [inputValue, setInputValue] = useState<string>('');
+export const CharacterSection = () => {
+  const [inputValue, setInputValue] = useState('');
   const { theme } = useTheme(); // Get the current theme
+  const [gltf, setGltf] = useState<THREE.Object3D | null>(null);
+  const [animations, setAnimations] = useState<THREE.AnimationClip[]>([]);
+
+  useEffect(() => {
+    const loader = new GLTFLoader();
+    loader.load(
+      '/avatar.glb',
+      (gltf) => {
+        setGltf(gltf.scene);
+        setAnimations(gltf.animations);
+      },
+      undefined,
+      (error) => {
+        console.error('Error loading GLTF:', error);
+      }
+    );
+  }, []);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value.toLowerCase();
@@ -91,7 +109,13 @@ export const CharacterSection: React.FC = () => {
           <ambientLight intensity={3} />
           <pointLight intensity={1.5} position={[10, 10, 10]} />
           <group position={[0, -2, 12]}>
-            <Model animations={animations} inputValue={inputValue} />
+            {gltf && (
+              <Model
+                animations={animations}
+                inputValue={inputValue}
+                gltf={gltf}
+              />
+            )}
           </group>
           <OrbitControls
             enableZoom={false}
