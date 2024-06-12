@@ -30,7 +30,7 @@ export const projectsData = [
   {
     image: '/projects/ai.png',
     title: 'Currently developing: AI app',
-    description: 'Cross platform app with AI intergrated',
+    description: 'Cross platform app with AI integrated',
     technologies: [
       'React Native Expo',
       'TypeScript',
@@ -106,7 +106,7 @@ export const projectsData = [
     image: '/projects/idir.png',
     title: 'Fact Checker',
     description:
-      'Full stack website that searches the web and generates a easily to read map with all its findings related to the claim',
+      'Full stack website that searches the web and generates an easy to read map with all its findings related to the claim',
     technologies: [
       'Flask',
       'Python',

@@ -127,7 +127,7 @@ export const CharacterSection = () => {
             className="rounded-md"
             style={{
               width: '100%',
-              height: '300px',
+              height: '320px',
               background: theme === 'dark' ? 'transparent' : '#000000',
             }}
           >
@@ -135,7 +135,7 @@ export const CharacterSection = () => {
               <PerspectiveCamera makeDefault position={[0, 8, 26]} />
               <ambientLight intensity={3} />
               <pointLight intensity={1.5} position={[10, 10, 10]} />
-              <group position={[0, -2, 12]}>
+              <group position={[0, -2.8, 11.6]}>
                 {gltf && (
                   <Model
                     animations={animations}
@@ -156,7 +156,7 @@ export const CharacterSection = () => {
             value={inputValue}
             onChange={handleInputChange}
             placeholder="If (value == 'wave' or value == 'backflip') and hover"
-            className="mt-6 w-full p-2"
+            className="mt-4 w-full p-2"
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
