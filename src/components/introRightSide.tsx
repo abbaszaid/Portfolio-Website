@@ -2,9 +2,12 @@
 import React, { Suspense, useEffect, useRef, useState } from 'react';
 import { Html, OrbitControls, PerspectiveCamera } from '@react-three/drei';
 import { Canvas, extend, useFrame } from '@react-three/fiber';
+import { motion } from 'framer-motion';
 import { useTheme } from 'next-themes'; // Import useTheme from next-themes
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+
+import Loader from './loader';
 
 extend({ CircleGeometry: THREE.CircleGeometry });
 
@@ -72,7 +75,7 @@ function Model({
       onPointerOver={handlePointerOver}
       onPointerOut={handlePointerOut}
     >
-      <primitive object={gltf} scale={5} />
+      <primitive object={gltf} scale={6} />
     </group>
   );
 }
@@ -107,43 +110,61 @@ export const CharacterSection = () => {
   };
 
   return (
-    <div className="basis-1/2">
-      <Canvas
-        className="rounded-md"
-        style={{
-          width: '100%',
-          height: '250px',
-          background: theme === 'dark' ? 'transparent' : '#000000',
-        }}
-      >
-        <Suspense fallback={<Html>Loading...</Html>}>
-          <PerspectiveCamera makeDefault position={[0, 6, 23]} />
-          <ambientLight intensity={3} />
-          <pointLight intensity={1.5} position={[10, 10, 10]} />
-          <group position={[0, -2, 12]}>
-            {gltf && (
-              <Model
-                animations={animations}
-                inputValue={inputValue}
-                gltf={gltf}
+    <motion.div
+      className="basis-1/2"
+      initial={{ opacity: 0, scale: 0 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        type: 'tween',
+        duration: 0.5,
+      }}
+    >
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <Canvas
+            className="rounded-md"
+            style={{
+              width: '100%',
+              height: '300px',
+              background: theme === 'dark' ? 'transparent' : '#000000',
+            }}
+          >
+            <Suspense fallback={<Html>Loading...</Html>}>
+              <PerspectiveCamera makeDefault position={[0, 8, 26]} />
+              <ambientLight intensity={3} />
+              <pointLight intensity={1.5} position={[10, 10, 10]} />
+              <group position={[0, -2, 12]}>
+                {gltf && (
+                  <Model
+                    animations={animations}
+                    inputValue={inputValue}
+                    gltf={gltf}
+                  />
+                )}
+              </group>
+              <OrbitControls
+                enableZoom={false}
+                enablePan={false}
+                enableRotate={false}
               />
-            )}
-          </group>
-          <OrbitControls
-            enableZoom={false}
-            enablePan={false}
-            enableRotate={false}
+            </Suspense>
+          </Canvas>
+          <motion.input
+            type="text"
+            value={inputValue}
+            onChange={handleInputChange}
+            placeholder="If (value == 'wave' or value == 'backflip') and hover"
+            className="mt-6 w-full p-2"
+            initial={{ opacity: 0, y: 100 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: 0.2,
+            }}
           />
-        </Suspense>
-      </Canvas>
-      <input
-        type="text"
-        value={inputValue}
-        onChange={handleInputChange}
-        placeholder="Type 'wave' or 'backflip' to trigger animations"
-        style={{ width: '100%', padding: '10px', marginTop: '30px' }}
-      />
-      {loading && <div>Loading avatar...</div>}
-    </div>
+        </>
+      )}
+    </motion.div>
   );
 };

@@ -11,7 +11,7 @@ export const Intro = () => {
     <section
       ref={ref}
       id="home"
-      className="flex flex-col gap-2 sm:mt-40 sm:flex-row sm:gap-4 sm:text-left md:mt-20 lg:mt-20"
+      className="flex flex-col gap-2 sm:mt-40 sm:flex-row sm:gap-4 sm:text-left md:mt-10 lg:mt-10"
     >
       <TextSection />
       <CharacterSection />
