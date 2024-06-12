@@ -18,38 +18,47 @@ function Model({
   gltf: THREE.Object3D;
 }) {
   const group = useRef<THREE.Group>(null);
-  const mixer = useRef(new THREE.AnimationMixer(gltf)).current;
+  const mixer = useRef<THREE.AnimationMixer | null>(null);
   const actions = useRef<THREE.AnimationAction[]>([]);
 
   useEffect(() => {
-    if (animations) {
-      actions.current = animations.map((animation) =>
-        mixer.clipAction(animation)
-      );
-      // Play the standing animation by default
-      actions.current[1].play();
+    if (gltf) {
+      mixer.current = new THREE.AnimationMixer(gltf);
+      if (animations.length > 0) {
+        actions.current = animations.map((animation) =>
+          mixer.current!.clipAction(animation)
+        );
+        actions.current.forEach((action, index) => {
+          if (index === 1) {
+            // Play standing animation by default
+            action.play();
+          }
+        });
+      }
     }
-  }, [animations, mixer]);
+  }, [gltf, animations]);
 
   useFrame((state, delta) => {
-    mixer.update(delta);
+    if (mixer.current) {
+      mixer.current.update(delta);
+    }
   });
 
   const playAnimation = (index: number) => {
-    actions.current.forEach((action, i) => {
-      if (i === index) {
+    if (mixer.current) {
+      const action = mixer.current.clipAction(animations[index]);
+      if (action) {
+        mixer.current.stopAllAction();
         action.reset().play();
-      } else {
-        action.stop();
       }
-    });
+    }
   };
 
   const handlePointerOver = () => {
     if (inputValue === 'wave') {
       playAnimation(2); // 'waving' animation index
     } else if (inputValue === 'backflip') {
-      playAnimation(0); // 'backflip' animation index (assuming 3 is the correct index)
+      playAnimation(0); // 'backflip' animation index
     }
   };
 
@@ -73,6 +82,7 @@ export const CharacterSection = () => {
   const { theme } = useTheme(); // Get the current theme
   const [gltf, setGltf] = useState<THREE.Object3D | null>(null);
   const [animations, setAnimations] = useState<THREE.AnimationClip[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loader = new GLTFLoader();
@@ -81,10 +91,12 @@ export const CharacterSection = () => {
       (gltf) => {
         setGltf(gltf.scene);
         setAnimations(gltf.animations);
+        setLoading(false);
       },
       undefined,
       (error) => {
         console.error('Error loading GLTF:', error);
+        setLoading(false);
       }
     );
   }, []);
@@ -101,7 +113,7 @@ export const CharacterSection = () => {
         style={{
           width: '100%',
           height: '250px',
-          background: theme === 'light' ? '#000000' : 'transparent',
+          background: theme === 'dark' ? 'transparent' : '#000000',
         }}
       >
         <Suspense fallback={<Html>Loading...</Html>}>
@@ -131,6 +143,7 @@ export const CharacterSection = () => {
         placeholder="Type 'wave' or 'backflip' to trigger animations"
         style={{ width: '100%', padding: '10px', marginTop: '30px' }}
       />
+      {loading && <div>Loading avatar...</div>}
     </div>
   );
 };
