@@ -12,10 +12,6 @@ export const TextSection = () => (
       <motion.a
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{
-          type: 'tween',
-          duration: 0.2,
-        }}
         href="https://chromewebstore.google.com/detail/priceseekr/pliclfpphjigemiobhmbnchgnjknffcd?pli=1"
         className="bg-muted rounded px-3 py-1 text-sm font-medium"
       >
