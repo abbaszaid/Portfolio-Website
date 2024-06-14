@@ -38,7 +38,7 @@ export const projectsData = [
       'FirebaseAuth',
     ],
     links: {
-      preview: 'https://audiophile-ms.netlify.app/',
+      preview: 'https://github.com/abbaszaid/tujjari',
       github: 'https://github.com/abbaszaid/tujjari',
     },
   },
@@ -55,7 +55,7 @@ export const projectsData = [
       'Firestore',
     ],
     links: {
-      preview: 'https://socialhub-ms.vercel.app/',
+      preview: 'https://github.com/abbaszaid/PriceSeekr',
       github: 'https://github.com/abbaszaid/PriceSeekr',
     },
   },
@@ -65,7 +65,7 @@ export const projectsData = [
     description: 'A multiplayer web game used by over 2000 people',
     technologies: ['JavaScript', 'Socket.io', 'API(axios)', 'HTML', 'CSS'],
     links: {
-      preview: 'https://next-starter-skolaczk.vercel.app',
+      preview: 'https://github.com/abbaszaid/geonerd',
       github: 'https://github.com/abbaszaid/geonerd',
     },
   },
@@ -81,7 +81,7 @@ export const projectsData = [
       'Firebase Realtime DB',
     ],
     links: {
-      preview: 'https://audiophile-ms.netlify.app/',
+      preview: 'https://github.com/abbaszaid/tujjari',
       github: 'https://github.com/abbaszaid/tujjari',
     },
   },
@@ -98,7 +98,7 @@ export const projectsData = [
       'Firestore',
     ],
     links: {
-      preview: 'https://socialhub-ms.vercel.app/',
+      preview: 'https://github.com/abbaszaid/Fast-as-Light',
       github: 'https://github.com/abbaszaid/Fast-as-Light',
     },
   },
