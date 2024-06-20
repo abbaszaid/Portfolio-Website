@@ -60,7 +60,7 @@ export const TextSection = () => (
           className="hidden sm:flex"
           asChild
         >
-          <a href="/resume_abbas_FT.pdf" download>
+          <a href="/projects/resume_abbas_FT.pdf" download>
             Resume <Icons.download className="ml-2 size-4" />
           </a>
         </Button>
