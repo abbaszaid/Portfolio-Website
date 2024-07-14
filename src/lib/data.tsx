@@ -116,7 +116,7 @@ export const projectsData = [
       'BeautifulSoup',
     ],
     links: {
-      preview: 'https://next-starter-skolaczk.vercel.app',
+      preview: 'https://github.com/abbaszaid/geonerd',
       github: 'https://github.com/abbaszaid/geonerd',
     },
   },
@@ -124,8 +124,22 @@ export const projectsData = [
 
 export const experiencesData = [
   {
-    title: 'SDE @ IDIR',
-    location: 'Dallas, Texas',
+    title: 'SWE Intern @ Alien Attorney',
+    location: 'Atlanta, GA',
+    description:
+      'SWE intern at Alien Attorney (Orbex Labs) working on a legal document sorter system',
+    date: '2024-Present',
+  },
+  {
+    title: 'SWE @ UTA Dept of Theatre Arts & Dance',
+    location: 'Arlington, TX',
+    description:
+      'Collaborated with a team of 9 to develop a motion tracking and projection system',
+    date: '2024-Present',
+  },
+  {
+    title: 'SWE @ IDIR',
+    location: 'Dallas, TX',
     description:
       'Worked part time as a web developer and built a full stack fact checker website with visualizations for a data research lab',
     date: '2022-Present',
