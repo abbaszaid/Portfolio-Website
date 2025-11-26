@@ -124,32 +124,25 @@ export const projectsData = [
 
 export const experiencesData = [
   {
-    title: 'SWE Intern @ Alien Attorney',
-    location: 'Atlanta, GA',
+    title: 'SWE @ Google',
+    location: 'Mountain View, CA',
     description:
-      'SWE intern at Alien Attorney (Orbex Labs) working on a legal document sorter system',
-    date: '2024-Present',
+      'SWE @ Google working on the Payments Platform',
+    date: '2025-Present',
   },
   {
     title: 'SWE @ UTA Dept of Theatre Arts & Dance',
     location: 'Arlington, TX',
     description:
       'Collaborated with a team of 9 to develop a motion tracking and projection system',
-    date: '2024-Present',
+    date: '2024-2024',
   },
   {
-    title: 'SWE @ IDIR',
+    title: 'Research Assistant @ IDIR',
     location: 'Dallas, TX',
     description:
-      'Worked part time as a web developer and built a full stack fact checker website with visualizations for a data research lab',
-    date: '2022-Present',
-  },
-  {
-    title: 'Java Developer Intern @ PISIQ',
-    location: 'Remote',
-    description:
-      'Built Telegram chatbots using Java and the telegram API to enhance the customer service offered',
-    date: '2020',
+      'Worked on fact checking algorithms and visualitization for a data research lab',
+    date: '2022-2025',
   },
 ] as const;
 
