@@ -144,13 +144,6 @@ export const experiencesData = [
       'Worked on fact checking algorithms and visualitization for a data research lab',
     date: '2022-2025',
   },
-  {
-    title: 'Research Assistant @ IDIR',
-    location: 'Dallas, TX',
-    description:
-      'Worked on fact checking algorithms and visualitization for a data research lab',
-    date: '2022-2025',
-  },
 ] as const;
 
 export const skillsData = [
