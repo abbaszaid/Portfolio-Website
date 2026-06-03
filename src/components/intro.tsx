@@ -1,7 +1,7 @@
 'use client';
 import { TextSection } from './introLeftSide';
-import { CharacterSection } from './introRightSide';
 
+import { CharacterSectionLazy } from '@/components/character-section-lazy';
 import { useSectionInView } from '@/hooks/use-section-in-view';
 
 export const Intro = () => {
@@ -14,7 +14,7 @@ export const Intro = () => {
       className="my-5 flex scroll-mt-96 flex-col gap-2 sm:flex-row sm:gap-4 "
     >
       <TextSection />
-      <CharacterSection />
+      <CharacterSectionLazy />
     </section>
   );
 };

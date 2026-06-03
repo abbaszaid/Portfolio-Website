@@ -5,6 +5,7 @@ import { Canvas, extend, useFrame } from '@react-three/fiber';
 import { motion } from 'framer-motion';
 import { useTheme } from 'next-themes'; // Import useTheme from next-themes
 import * as THREE from 'three';
+import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 import Loader from './loader';
@@ -88,20 +89,35 @@ export const CharacterSection = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const loader = new GLTFLoader();
-    loader.load(
-      '/avatar.glb',
-      (gltf) => {
-        setGltf(gltf.scene);
-        setAnimations(gltf.animations);
-        setLoading(false);
-      },
-      undefined,
-      (error) => {
-        console.error('Error loading GLTF:', error);
-        setLoading(false);
-      }
-    );
+    let cancelled = false;
+
+    const loadModel = async () => {
+      const loader = new GLTFLoader();
+      loader.setMeshoptDecoder(MeshoptDecoder);
+      await MeshoptDecoder.ready;
+
+      loader.load(
+        '/avatar.glb',
+        (gltf) => {
+          if (cancelled) return;
+          setGltf(gltf.scene);
+          setAnimations(gltf.animations);
+          setLoading(false);
+        },
+        undefined,
+        (error) => {
+          if (cancelled) return;
+          console.error('Error loading GLTF:', error);
+          setLoading(false);
+        }
+      );
+    };
+
+    loadModel();
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -111,7 +127,7 @@ export const CharacterSection = () => {
 
   return (
     <motion.div
-      className="basis-1/2"
+      className="w-full"
       initial={{ opacity: 0, scale: 0 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{
@@ -121,6 +137,10 @@ export const CharacterSection = () => {
     >
       {loading ? (
         <Loader />
+      ) : !gltf ? (
+        <p className="text-muted-foreground text-sm">
+          Could not load the 3D avatar. Refresh the page to try again.
+        </p>
       ) : (
         <>
           <Canvas

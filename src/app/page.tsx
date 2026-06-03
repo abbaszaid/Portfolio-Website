@@ -1,6 +1,6 @@
 import { About } from '@/components/about';
 import { Contact } from '@/components/contact';
-import { Experience } from '@/components/experience';
+import { ExperienceLazy } from '@/components/experience-lazy';
 import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
 import { Intro } from '@/components/intro';
@@ -17,7 +17,7 @@ const Home = () => {
         <SectionDivider />
         <About />
         <Projects />
-        <Experience />
+        <ExperienceLazy />
         <Contact />
         <Footer />
       </div>
