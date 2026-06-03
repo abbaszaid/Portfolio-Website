@@ -1,9 +1,9 @@
 import { env } from '@/env.mjs';
 
 export const siteConfig = {
-  title: 'Abbas Zaidi | CS @ UTA',
+  title: 'Abbas Zaidi | Software Engineer',
   description:
-    "Hello, I'm Abbas.I am a senior at the University of Texas at Arlington majoring in CS. I love developing and deploying websites, apps, games and extensions that serve a purpose.",
+    "Hello, I'm Abbas. I am a software engineer who loves building websites, apps, games, and extensions that serve a purpose.",
   keywords: [
     'Abbas Zaidi',
     'Software Engineer',

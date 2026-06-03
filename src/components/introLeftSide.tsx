@@ -37,9 +37,8 @@ export const TextSection = () => (
         }}
         className="text-muted-foreground max-w-lg"
       >
-        I am a senior at the University of Texas at Arlington majoring in CS. I
-        love developing and deploying websites, apps, games and extensions that
-        serve a purpose.
+        I am a software engineer who loves building websites, apps, games, and
+        extensions that serve a purpose.
       </motion.p>
       <motion.div
         initial={{ opacity: 0, y: 100 }}
