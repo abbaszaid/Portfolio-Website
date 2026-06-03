@@ -126,8 +126,7 @@ export const experiencesData = [
   {
     title: 'SWE @ Google',
     location: 'Mountain View, CA',
-    description:
-      'SWE @ Google working on the Payments Platform',
+    description: 'SWE @ Google working on the Payments Platform',
     date: '2025-Present',
   },
   {
