@@ -27,7 +27,9 @@ export const About = () => {
               alt="Your Photo"
               width={300}
               height={300}
-              className="w-full"
+              sizes="(max-width: 768px) 128px, 300px"
+              className="h-auto w-full"
+              loading="lazy"
             />
           </div>
         </div>

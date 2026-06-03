@@ -43,12 +43,13 @@ export const Project = ({ project, index }: TProps) => {
     >
       <div className="bg-muted flex size-20 items-center justify-center rounded-full p-2">
         <Image
-          priority={false}
           src={image}
           alt={`${title} image`}
-          object-contain
-          height={150}
-          width={150}
+          height={80}
+          width={80}
+          sizes="80px"
+          className="size-full object-contain"
+          loading="lazy"
         />
       </div>
       <h3 className="my-2 text-lg font-medium">{title}</h3>
