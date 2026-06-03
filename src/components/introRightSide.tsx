@@ -92,28 +92,34 @@ export const CharacterSection = () => {
     let cancelled = false;
 
     const loadModel = async () => {
-      const loader = new GLTFLoader();
-      loader.setMeshoptDecoder(MeshoptDecoder);
-      await MeshoptDecoder.ready;
+      try {
+        const loader = new GLTFLoader();
+        loader.setMeshoptDecoder(MeshoptDecoder);
+        await MeshoptDecoder.ready;
 
-      loader.load(
-        '/avatar.glb',
-        (gltf) => {
-          if (cancelled) return;
-          setGltf(gltf.scene);
-          setAnimations(gltf.animations);
-          setLoading(false);
-        },
-        undefined,
-        (error) => {
-          if (cancelled) return;
-          console.error('Error loading GLTF:', error);
-          setLoading(false);
-        }
-      );
+        loader.load(
+          '/avatar.glb',
+          (gltf) => {
+            if (cancelled) return;
+            setGltf(gltf.scene);
+            setAnimations(gltf.animations);
+            setLoading(false);
+          },
+          undefined,
+          (error) => {
+            if (cancelled) return;
+            console.error('Error loading GLTF:', error);
+            setLoading(false);
+          }
+        );
+      } catch (error) {
+        if (cancelled) return;
+        console.error('Error initializing GLTF loader:', error);
+        setLoading(false);
+      }
     };
 
-    loadModel();
+    void loadModel();
 
     return () => {
       cancelled = true;
